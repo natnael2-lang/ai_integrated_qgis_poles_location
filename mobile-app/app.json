@@ -1,0 +1,34 @@
+{
+  "expo": {
+    "name": "pole-mapper",
+    "slug": "pole-mapper",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "Used to tag the GPS position of each pole.",
+        "NSCameraUsageDescription": "Used to photograph poles for the asset record."
+      }
+    },
+    "android": {
+      "permissions": ["ACCESS_FINE_LOCATION", "CAMERA"]
+    },
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow app to access your location to tag pole positions."
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Allow app to access photos.",
+          "cameraPermission": "Allow app to use the camera to photograph poles."
+        }
+      ]
+    ]
+  }
+}
