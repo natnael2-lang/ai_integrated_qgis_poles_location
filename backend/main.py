@@ -26,7 +26,7 @@ app.include_router(history_router)
 
 # Serves backend/public/report.html and backend/public/map.html at
 # /app/report.html and /app/map.html once deployed.
-app.mount("/app", StaticFiles(directory="public", html=True), name="public")
+#app.mount("/app", StaticFiles(directory="public", html=True), name="public")
 
 
 @app.get("/")
