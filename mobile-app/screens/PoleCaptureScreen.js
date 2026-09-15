@@ -40,6 +40,7 @@ export default function PoleCaptureScreen() {
       Alert.alert('Success', `Pole ${poleCode} submitted (status: ${result.record_status}).`);
       resetForm();
     } catch (err) {
+        console.error('Submit error full:', err);
       Alert.alert('Error', err.message);
     } finally {
       setLoading(false);

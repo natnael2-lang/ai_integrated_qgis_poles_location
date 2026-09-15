@@ -5,21 +5,35 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "userInterfaceStyle": "light",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
     "ios": {
       "supportsTablet": true,
       "infoPlist": {
-        "NSLocationWhenInUseUsageDescription": "Used to tag the GPS position of each pole.",
+        "NSLocationWhenInUseUsageDescription": "Used to tag the GPS position of each pole, area, or line.",
         "NSCameraUsageDescription": "Used to photograph poles for the asset record."
       }
     },
     "android": {
-      "permissions": ["ACCESS_FINE_LOCATION", "CAMERA"]
+      "permissions": [
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.CAMERA"
+      ],
+      "package": "com.qgis.polemapper",
+      "config": {
+        "googleMaps": {
+          "apiKey": "PASTE_YOUR_GOOGLE_MAPS_ANDROID_API_KEY_HERE"
+        }
+      }
     },
     "plugins": [
       [
         "expo-location",
         {
-          "locationAlwaysAndWhenInUsePermission": "Allow app to access your location to tag pole positions."
+          "locationAlwaysAndWhenInUsePermission": "Allow app to access your location to tag pole, area, and line positions."
         }
       ],
       [

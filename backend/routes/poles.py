@@ -1,6 +1,7 @@
 import os
-from fastapi import APIRouter, UploadFile, File, Form, HTTPException
+from fastapi import APIRouter, UploadFile, File, Form, HTTPException, Depends
 from services.supabase_client import upload_photo, insert_pole
+from services.auth import get_current_user
 
 router = APIRouter()
 
@@ -15,8 +16,8 @@ async def upload_pole(
     pole_code: str = Form(...),
     condition: str = Form(...),
     device_timestamp: str = Form(...),
-    submitted_by: str = Form(default="test_user"),
     photo: UploadFile = File(...),
+    user: dict = Depends(get_current_user),
 ):
     # --- basic rule-based validation ---
     if accuracy_m > MAX_ACCURACY_METERS:
@@ -43,7 +44,7 @@ async def upload_pole(
         lon=lon,
         device_timestamp=device_timestamp,
         photo_url=photo_url,
-        submitted_by=submitted_by,
+        submitted_by=user["email"],
         status=status,
     )
 

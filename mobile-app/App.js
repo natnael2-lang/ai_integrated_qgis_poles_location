@@ -1,16 +1,17 @@
+import 'react-native-gesture-handler';
 import React from 'react';
-import { SafeAreaView, StatusBar, StyleSheet } from 'react-native';
-import PoleCaptureScreen from './screens/PoleCaptureScreen';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { StatusBar } from 'react-native';
+import { AuthProvider } from './context/AuthContext';
+import RootNavigator from './navigation/RootNavigator';
 
 export default function App() {
   return (
-    <SafeAreaView style={styles.safeArea}>
+    <SafeAreaProvider>
       <StatusBar barStyle="dark-content" />
-      <PoleCaptureScreen />
-    </SafeAreaView>
+      <AuthProvider>
+        <RootNavigator />
+      </AuthProvider>
+    </SafeAreaProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  safeArea: { flex: 1, backgroundColor: '#fff' },
-});
